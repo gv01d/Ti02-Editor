@@ -12,8 +12,7 @@ import spark.Response;
 
 
 public class ProdutoService {
-
-	private ProdutoDAO produtoDAO = new ProdutoDAO();
+	
 	private String form;
 	private final int FORM_INSERT = 1;
 	private final int FORM_DETAIL = 2;
@@ -21,7 +20,6 @@ public class ProdutoService {
 	private final int FORM_ORDERBY_ID = 1;
 	private final int FORM_ORDERBY_DESCRICAO = 2;
 	private final int FORM_ORDERBY_PRECO = 3;
-	
 	
 	public ProdutoService() {
 		makeForm();
@@ -51,12 +49,14 @@ public class ProdutoService {
 		
 		String umProduto = "";
 		if(tipo != FORM_INSERT) {
-			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
-			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;<a href=\"/produto/list/1\">Novo Produto</a></b></font></td>";
-			umProduto += "\t\t</tr>";
-			umProduto += "\t</table>";
-			umProduto += "\t<br>";			
+			umProduto += "\t\"<div class=\\\"profile-info\\\">\\n\"";
+			umProduto += "\t/t<label for=\\\"id\\\">ID:</label>\\n";
+			umProduto += "\t\t\t<p id=\\\"id\\\">123456</p>\\n";
+			umProduto += "</div>\\n";
+			umProduto += "\t<div class=\\\"profile-info\\\">\\n";
+			umProduto += "\t<label for=\\\"nome\\\">Nome Completo:</label>\\n";
+			umProduto += "\t<p id=\\\"nome\\\">João da Silva</p>\\n";
+			umProduto += "</div>\\n";
 		}
 		
 		if(tipo == FORM_INSERT || tipo == FORM_UPDATE) {
@@ -83,12 +83,12 @@ public class ProdutoService {
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
 			umProduto += "\t\t\t<td>&nbsp;Descrição: <input class=\"input--register\" type=\"text\" name=\"descricao\" value=\""+ descricao +"\"></td>";
-			umProduto += "\t\t\t<td>Preco: <input class=\"input--register\" type=\"text\" name=\"preco\" value=\""+ produto.getPreco() +"\"></td>";
-			umProduto += "\t\t\t<td>Quantidade: <input class=\"input--register\" type=\"text\" name=\"quantidade\" value=\""+ produto.getQuantidade() +"\"></td>";
+			umProduto += "\t\t\t<td>Preco: <input class=\"input--register\" type=\"text\" name=\"preco\" value=\""+ produto.getEmail() +"\"></td>";
+			umProduto += "\t\t\t<td>Quantidade: <input class=\"input--register\" type=\"text\" name=\"quantidade\" value=\""+ produto.getEmail() +"\"></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: <input class=\"input--register\" type=\"text\" name=\"dataFabricacao\" value=\""+ produto.getDataFabricacao().toString() + "\"></td>";
-			umProduto += "\t\t\t<td>Data de validade: <input class=\"input--register\" type=\"text\" name=\"dataValidade\" value=\""+ produto.getDataValidade().toString() + "\"></td>";
+			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: <input class=\"input--register\" type=\"text\" name=\"dataFabricacao\" value=\""+ produto.getEmail().toString() + "\"></td>";
+			umProduto += "\t\t\t<td>Data de validade: <input class=\"input--register\" type=\"text\" name=\"dataValidade\" value=\""+ produto.getEmail().toString() + "\"></td>";
 			umProduto += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t</table>";
@@ -96,19 +96,19 @@ public class ProdutoService {
 		} else if (tipo == FORM_DETAIL){
 			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Produto (ID " + produto.getID() + ")</b></font></td>";
+			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Produto (ID " + produto.getEmail() + ")</b></font></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
 			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
 			umProduto += "\t\t\t<td>&nbsp;Descrição: "+ produto.getDescricao() +"</td>";
-			umProduto += "\t\t\t<td>Preco: "+ produto.getPreco() +"</td>";
-			umProduto += "\t\t\t<td>Quantidade: "+ produto.getQuantidade() +"</td>";
+			umProduto += "\t\t\t<td>Preco: "+ produto.getEmail() +"</td>";
+			umProduto += "\t\t\t<td>Quantidade: "+ produto.getEmail() +"</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getDataFabricacao().toString() + "</td>";
-			umProduto += "\t\t\t<td>Data de validade: "+ produto.getDataValidade().toString() + "</td>";
+			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getEmail().toString() + "</td>";
+			umProduto += "\t\t\t<td>Data de validade: "+ produto.getEmail().toString() + "</td>";
 			umProduto += "\t\t\t<td>&nbsp;</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t</table>";		
@@ -143,10 +143,10 @@ public class ProdutoService {
 			list += "\n<tr bgcolor=\""+ bgcolor +"\">\n" + 
             		  "\t<td>" + p.getId() + "</td>\n" +
             		  "\t<td>" + p.getDescricao() + "</td>\n" +
-            		  "\t<td>" + p.getPreco() + "</td>\n" +
+            		  "\t<td>" + p.getEmail() + "</td>\n" +
             		  "\t<td align=\"center\" valign=\"middle\"><a href=\"/produto/" + p.getId() + "\"><img src=\"/image/detail.png\" width=\"20\" height=\"20\"/></a></td>\n" +
             		  "\t<td align=\"center\" valign=\"middle\"><a href=\"/produto/update/" + p.getId() + "\"><img src=\"/image/update.png\" width=\"20\" height=\"20\"/></a></td>\n" +
-            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:confirmarDeleteProduto('" + p.getId() + "', '" + p.getDescricao() + "', '" + p.getPreco() + "');\"><img src=\"/image/delete.png\" width=\"20\" height=\"20\"/></a></td>\n" +
+            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:confirmarDeleteProduto('" + p.getId() + "', '" + p.getDescricao() + "', '" + p.getEmail() + "');\"><img src=\"/image/delete.png\" width=\"20\" height=\"20\"/></a></td>\n" +
             		  "</tr>\n";
 		}
 		list += "</table>";		
@@ -157,7 +157,7 @@ public class ProdutoService {
 	public Object insert(Request request, Response response) {
 		String nomeCompleto = request.queryParams("nomeCompleto");
 		String email = request.queryParams("email");
-		LocalDateTime dataNascimento = LocalDateTime.parse(request.queryParams("dataNascimento"));
+		LocalDate dataNascimento = LocalDate.parse(request.queryParams("dataNascimento"));
 		String instrumento = request.queryParams("instrumento");
 		String descricao = request.queryParams("descricao");
 		
@@ -229,7 +229,7 @@ public class ProdutoService {
 
         if (produto != null) {
         	produto.setNomeCompleto(request.queryParams("nomecompleto"));
-        	produto.setDataNascimento(LocalDateTime.parse(request.queryParams("dataNacimento")));
+        	produto.setDataNascimento(LocalDate.parse(request.queryParams("dataNacimento")));
         	produto.setDescricao(request.queryParams("descricao"));
         	
         	produtoDAO.update(produto);

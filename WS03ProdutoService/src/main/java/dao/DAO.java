@@ -13,7 +13,7 @@ public class DAO {
         String driverName = "org.postgresql.Driver";                    
         // Modifique as informações de conexão para o PostgreSQL no Azure
         String serverName = "didaticbeat.postgres.database.azure.com";
-        String mydatabase = "teste";
+        String mydatabase = "postgres";
         int porta = 5432; // A porta padrão para o PostgreSQL é 5432, mas no Azure pode ser diferente
         String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
         String username = "didaticbeat"; // Substitua pelo seu nome de usuário no Azure
