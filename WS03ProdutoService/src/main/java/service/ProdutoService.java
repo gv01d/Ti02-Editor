@@ -13,6 +13,7 @@ import spark.Response;
 
 public class ProdutoService {
 	
+	private ProdutoDAO produtoDAO = new ProdutoDAO();
 	private String form;
 	private final int FORM_INSERT = 1;
 	private final int FORM_DETAIL = 2;
@@ -115,7 +116,8 @@ public class ProdutoService {
 		} else {
 			System.out.println("ERRO! Tipo não identificado " + tipo);
 		}
-		form = form.replaceFirst("<UM-PRODUTO>", umProduto);
+		form = form.replaceFirst("%ID%", String.valueOf(produto.getId()));
+		form = form.replaceFirst("%NOME%", produto.getNomeCompleto());
 		
 		String list = new String("<table width=\"80%\" align=\"center\" bgcolor=\"#f3f3f3\">");
 		list += "\n<tr><td colspan=\"6\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Relação de Produtos</b></font></td></tr>\n" +
@@ -189,7 +191,7 @@ public class ProdutoService {
             response.status(404); // 404 Not found
             String resp = "Produto " + id + " não encontrado.";
     		makeForm();
-    		form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");     
+    		form.replaceFirst("%ID%",resp);     
         }
 
 		return form;

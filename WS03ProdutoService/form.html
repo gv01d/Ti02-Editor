@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil da Usuário</title>
+    <script type="text/javascript">
+
+    function confirmarDeleteJogo(id, descricao, preco) {
+
+        if (confirm('Confirmar a exclusão do jogo [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {
+            location.href = '/jogo/delete/' + id;
+        }
+    }
+    function onLoad() {
+        if (document.getElementById("msg").value != "") {
+            alert(document.getElementById("msg").value);
+        }
+    }
+</script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,7 +44,7 @@
         }
     </style>
 </head>
-<body>
+<body onload = "onLoad()">
     <div class="container">
         <h1>Perfil de Usuário</h1>
         <div class="profile-info">
