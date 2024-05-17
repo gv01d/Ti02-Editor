@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -7,26 +8,11 @@
 </head>
 
 <script type="text/javascript">
-	function confirmUpdate() {
 
-		var form = document.querySelector("#form-add");
-		var id = location.href.substring(location.href.lastIndexOf("/") + 1);
-		var nomeCompleto = document.querySelector('[name="nomeCompleto"]').value;
-		var descricao = document.querySelector('[name="descricao"]').value;
-		var email = document.querySelector('[name="email"]').value;
-		var dataNacimento = document.querySelector('[name="dataNascimento"]').value;
-		var instrumento = document.querySelector('[name="instrumento"]').value;
-		if (confirm('Confirm Update of ' + nomeCompleto)) {
-			if (form) {
-				form.setAttribute("action", '/produto/update/' + id + `?nomecompleto${nomeCompleto}&descricao=${descricao}&email=${email}&datanacimento=${dataNacimento}$instrumento=${instrumento}`);
-			}
-		}
-	}
+	function confirmarDeleteJogo(id, descricao, preco) {
 
-	function confirmarDeleteProduto(id, nomeCompleto, email) {
-
-		if (confirm('Confirmar a exclusão do Produto [' + nomeCompleto + '] (ID ' + id + ') com Email: ' + email)) {
-			location.href = '/produto/delete/' + id;
+		if (confirm('Confirmar a exclusão do jogo [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {
+			location.href = '/jogo/delete/' + id;
 		}
 	}
 	function onLoad() {

@@ -3,16 +3,16 @@ package model;
 import java.time.LocalDate;
 
 public class Produto {
-	private int id;
+    private int id;
     private String nomeCompleto;
     private String email;
     private LocalDate dataNascimento;
     private String instrumento;
     private String descricao;
-    
+
     // Construtores
     public Produto() {
-    	id = 0;
+        id = 0;
         nomeCompleto = "";
         email = "";
         dataNascimento = LocalDate.now();
@@ -20,8 +20,9 @@ public class Produto {
         descricao = "";
     }
 
-    public Produto(int id, String nomeCompleto, String email, LocalDate dataNascimento, String instrumento, String descricao) {
-    	this.id = id;
+    public Produto(int id, String nomeCompleto, String email, LocalDate dataNascimento, String instrumento,
+            String descricao) {
+        this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.dataNascimento = dataNascimento;
@@ -31,13 +32,13 @@ public class Produto {
 
     // Métodos de acesso
     public int getId() {
-    	return id;
+        return id;
     }
-    
+
     public void setId(int id) {
-    	this.id = id;
+        this.id = id;
     }
-    
+
     public String getNomeCompleto() {
         return nomeCompleto;
     }
@@ -69,7 +70,7 @@ public class Produto {
     public void setInstrumento(String instrumento) {
         this.instrumento = instrumento;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }
