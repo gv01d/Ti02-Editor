@@ -65,8 +65,8 @@ public class ProdutoService {
 			String name, descricao, buttonLabel;
 			if (tipo == FORM_INSERT){
 				action += "insert";
-				name = "Inserir Produto";
-				descricao = "leite, pão, ...";
+				name = "Inserir Descrição";
+				descricao = "Escreva aqui...";
 				buttonLabel = "Inserir";
 			} else {
 				action += "update/" + produto.getId();
@@ -83,13 +83,13 @@ public class ProdutoService {
 			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td>Nome Completo: <input class=\"input--register\" type=\"text\" name=\"nomeCompleto\" value=\""+ produto.getNomeCompleto() +"\"></td>";
 			umProduto += "\t\t\t<td>&nbsp;Descrição: <input class=\"input--register\" type=\"text\" name=\"descricao\" value=\""+ descricao +"\"></td>";
-			umProduto += "\t\t\t<td>Preco: <input class=\"input--register\" type=\"text\" name=\"preco\" value=\""+ produto.getEmail() +"\"></td>";
-			umProduto += "\t\t\t<td>Quantidade: <input class=\"input--register\" type=\"text\" name=\"quantidade\" value=\""+ produto.getEmail() +"\"></td>";
+			umProduto += "\t\t\t<td>email: <input class=\"input--register\" type=\"text\" name=\"email\" value=\""+ produto.getEmail() +"\"></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: <input class=\"input--register\" type=\"text\" name=\"dataFabricacao\" value=\""+ produto.getEmail().toString() + "\"></td>";
-			umProduto += "\t\t\t<td>Data de validade: <input class=\"input--register\" type=\"text\" name=\"dataValidade\" value=\""+ produto.getEmail().toString() + "\"></td>";
+			umProduto += "\t\t\t<td>&nbsp;Data de Nascimento: <input class=\"input--register\" type=\"text\" name=\"dataNascimento\" value=\""+ produto.getDataNascimento().toString() + "\"></td>";
+			umProduto += "\t\t\t<td>Instrumento: <input class=\"input--register\" type=\"text\" name=\"instrumento\" value=\""+ produto.getInstrumento() + "\"></td>";
 			umProduto += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t</table>";
@@ -97,19 +97,19 @@ public class ProdutoService {
 		} else if (tipo == FORM_DETAIL){
 			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Produto (ID " + produto.getEmail() + ")</b></font></td>";
+			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Produto (ID " + produto.getId() + ")</b></font></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
 			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td>&nbsp;Descrição: "+ produto.getDescricao() +"</td>";
+			umProduto += "\t\t\t<td>&nbsp;Descrição: "+ produto.getId() +"</td>";
 			umProduto += "\t\t\t<td>Preco: "+ produto.getEmail() +"</td>";
-			umProduto += "\t\t\t<td>Quantidade: "+ produto.getEmail() +"</td>";
+			umProduto += "\t\t\t<td>Quantidade: "+ produto.getDataNascimento().toString() +"</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t\t<tr>";
-			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getEmail().toString() + "</td>";
-			umProduto += "\t\t\t<td>Data de validade: "+ produto.getEmail().toString() + "</td>";
+			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getDataNascimento().toString() + "</td>";
+			umProduto += "\t\t\t<td>Data de validade: "+ produto.getEmail() + "</td>";
 			umProduto += "\t\t\t<td>&nbsp;</td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t</table>";		
@@ -120,12 +120,12 @@ public class ProdutoService {
 		form = form.replaceFirst("%NOME%", produto.getNomeCompleto());
 		
 		String list = new String("<table width=\"80%\" align=\"center\" bgcolor=\"#f3f3f3\">");
-		list += "\n<tr><td colspan=\"6\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Relação de Produtos</b></font></td></tr>\n" +
+		list += "\n<tr><td colspan=\"6\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Perfil: </b></font></td></tr>\n" +
 				"\n<tr><td colspan=\"6\">&nbsp;</td></tr>\n" +
     			"\n<tr>\n" + 
         		"\t<td><a href=\"/produto/list/" + FORM_ORDERBY_ID + "\"><b>ID</b></a></td>\n" +
         		"\t<td><a href=\"/produto/list/" + FORM_ORDERBY_DESCRICAO + "\"><b>Descrição</b></a></td>\n" +
-        		"\t<td><a href=\"/produto/list/" + FORM_ORDERBY_PRECO + "\"><b>Preço</b></a></td>\n" +
+        		"\t<td><a href=\"/produto/list/" + FORM_ORDERBY_PRECO + "\"><b>Email</b></a></td>\n" +
         		"\t<td width=\"100\" align=\"center\"><b>Detalhar</b></td>\n" +
         		"\t<td width=\"100\" align=\"center\"><b>Atualizar</b></td>\n" +
         		"\t<td width=\"100\" align=\"center\"><b>Excluir</b></td>\n" +

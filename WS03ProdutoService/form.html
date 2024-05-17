@@ -1,3 +1,175 @@
+
+<html>
+
+<head>
+	<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+	<title>Controle de Estoque</title>
+</head>
+
+<script type="text/javascript">
+
+	function confirmarDeleteJogo(id, descricao, preco) {
+
+		if (confirm('Confirmar a exclusão do jogo [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {
+			location.href = '/jogo/delete/' + id;
+		}
+	}
+	function onLoad() {
+		if (document.getElementById("msg").value != "") {
+			alert(document.getElementById("msg").value);
+		}
+	}
+</script>
+
+
+<body>
+	<div class="main" onload="onLoad()">
+		<h1>Perfil</h1>
+		<input type="hidden" id="msg" name="msg" value="">
+		<UM-PRODUTO>
+			<LISTAR-PRODUTO>
+				<style>
+					* {
+						box-sizing: border-box;
+					}
+
+					body {
+						background-color: rgb(42, 51, 56);
+					}
+
+					h1 {
+						text-align: center;
+						color: rgb(253, 41, 76);
+						font-weight: bold;
+						font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+					}
+
+					form {
+						margin: 0;
+					}
+
+					.main {
+						background-color: rgb(11, 97, 90);
+						padding: 5px 40px;
+						height: 100%;
+						border-radius: 5px;
+						margin: 5px 50px;
+					}
+
+					.tab1 {
+						border-top: rgb(253, 41, 76) 10px;
+						border-top-style: solid;
+						border-top-left-radius: 5px;
+						border-top-right-radius: 5px;
+						background-color: white;
+						padding: 0px 10px;
+					}
+
+					.tab2 {
+						background-color: white;
+						border-top: rgb(11, 97, 90) dashed;
+						padding: 0px 10px;
+						padding-bottom: 10px;
+						border-bottom-left-radius: 5px;
+						border-bottom-right-radius: 5px;
+					}
+
+
+					.input--main__style {
+						background-color: #38df6a;
+					}
+
+					.input--button {
+						font-weight: bold;
+						font-family: Arial;
+						font-size: medium;
+						border-color: transparent;
+						display: block;
+						margin: 0px auto;
+						margin-bottom: 10px;
+						color: white;
+					}
+
+					.input--register {
+						display: inline;
+					}
+
+					table {
+						border: none;
+					}
+
+					.out {
+						background-color: rgb(104, 149, 155);
+						width: 100%;
+						margin: 0;
+						border: 0;
+						padding: 0px 5px;
+
+					}
+
+					.out td {
+						color: rgb(248, 59, 91);
+						text-shadow: -1px -1px 0 rgb(11, 97, 90), 1px -1px 0 rgb(11, 97, 90), -1px 1px 0 rgb(11, 97, 90), 1px 1px 0 rgb(11, 97, 90);
+						font-weight: bold;
+						font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+						margin: 0;
+						border: 0;
+						padding: 5px;
+					}
+
+					td {
+						color: rgb(247, 165, 57);
+					}
+
+					b {
+						text-align: center;
+						color: rgb(253, 41, 76);
+						font-weight: bold;
+						font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+					}
+
+					tbody b {
+						color: rgb(247, 165, 57);
+					}
+
+					tbody font b {
+						color: rgb(253, 41, 76);
+					}
+
+					input {
+						display: block;
+						border-radius: 7px;
+						padding: 10px;
+						border-style: solid;
+						border-color: rgb(253, 41, 76);
+						color: black;
+						padding: 10px;
+						margin-bottom: 10px;
+					}
+
+					form p {
+						text-align: initial;
+						display: inline;
+						margin-left: 15px;
+					}
+
+					a {
+						text-decoration: none;
+					}
+
+					.p--nomargin {
+						margin-left: 0px;
+						margin-right: 10px;
+					}
+				</style>
+	</div>
+</body>
+
+</html>
+
+
+<!--
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -74,98 +246,4 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<html>
-<head>
-<meta content="text/html; charset = UTF-8" http-equiv="content-type">
-
-<title>Controle de Estoque</title>
-</head>
-
-<script type="text/javascript">
-
-function confirmarDeleteProduto(id, modelo, preco) {  
-	
-    if (confirm('Confirmar a exclusão do produto [' + modelo + '] (ID ' + id + ') com preço R$ ' + preco)) {  
-        location.href = '/produto/delete/' + id;
-    }
-}
-function onLoad() {
-    if(document.getElementById("msg").value != ""){
-      alert(document.getElementById("msg").value);
-    }
-}
-</script>
-
-
-<body onload="onLoad()">
-	<h1>Perfil</h1>
-	<input type="hidden" id="msg" name="msg" value="">
-    <UM-PRODUTO>
-	<br>
-	<LISTAR-PRODUTO>
-	<style>
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background-color: white;
-}
-
-
-.input--main__style {
-	background-color: #00FF00;
-}
-
-.input--button {
-	font-weight: bold;
-	font-family: Arial;
-	font-size: medium;
-	border-color: transparent;
-	display: block;
-	margin: 0px auto;
-	margin-bottom: 10px;
-	color: white;
-}
-
-.input--register {
-	display: inline;
-}
-
-input {
-	display: block;
-	border-radius: 7px;
-	padding: 10px;
-	border-style: solid;
-	border-color: lightgray;
-	color: black;
-	padding: 10px;
-	margin-bottom: 10px;
-}
-
-form p {
-	text-align: initial;
-	display: inline;
-	margin-left: 15px;
-}
-
-.p--nomargin {
-	margin-left: 0px;
-	margin-right: 10px;
-}
-</style>
-</body>
-</html>
--->
+  -->
